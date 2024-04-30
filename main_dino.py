@@ -292,7 +292,7 @@ def train_dino(args):
         #     shape_loader.sampler.set_epoch(epoch)
 
         # ============ training one epoch of DINO ... ============
-        if (epoch + 1) < args.warmup_epochs:
+        if epoch < args.warmup_epochs:
             train_stats = train_one_epoch(student, teacher, teacher_without_ddp, dino_loss,
                 data_loader, optimizer, lr_schedule, wd_schedule, momentum_schedule,
                 epoch, fp16_scaler, args)
